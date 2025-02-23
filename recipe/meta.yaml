@@ -1,5 +1,5 @@
 {% set name = "znh5md" %}
-{% set version = "0.3.6" %}
+{% set version = "0.4.4" %}
 {% set python_min = "3.10" %}
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/znh5md-{{ version }}.tar.gz
-  sha256: e077c9227b111bc5d659486f0c547ae1448aa26f125304b5872957885fa4ef83
+  sha256: 5b20f9ceed62e890935d16171c9abb0613f0ef1d65c1d63997d41838d495a35d
 
 build:
   entry_points:
@@ -20,7 +20,7 @@ build:
 requirements:
   host:
     - python {{ python_min }}
-    - poetry-core
+    - hatchling
     - pip
   run:
     - python >={{ python_min }},<4.0.0
