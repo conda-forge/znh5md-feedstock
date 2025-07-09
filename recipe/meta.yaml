@@ -1,5 +1,5 @@
 {% set name = "znh5md" %}
-{% set version = "0.4.7" %}
+{% set version = "0.4.8" %}
 {% set python_min = "3.10" %}
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/znh5md-{{ version }}.tar.gz
-  sha256: d7c8cf12070a403e241ede4601234555b8deb36a07ff800dad869842f844f663
+  sha256: 9dd02d45b5ed766e2f6a0c5b8c926cd15e5a8b9c3a80cab0303f518b129f16ac
 
 build:
   entry_points:
