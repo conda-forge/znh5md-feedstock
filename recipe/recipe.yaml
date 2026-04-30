@@ -1,0 +1,58 @@
+schema_version: 1
+
+context:
+  name: znh5md
+  version: "0.4.8"
+  python_min: "3.10"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/znh5md-${{ version }}.tar.gz
+  sha256: 9dd02d45b5ed766e2f6a0c5b8c926cd15e5a8b9c3a80cab0303f518b129f16ac
+
+build:
+  number: 1
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  python:
+    entry_points:
+      - znh5md = znh5md.cli:app
+
+requirements:
+  host:
+    - python 3.10.*
+    - hatchling
+    - pip
+  run:
+    - plams >=2025.102
+    - python >=${{ python_min }},<4.0.0
+    - h5py >=3.12.1
+    - ase >=3.24.0
+    - tqdm >=4.67.1
+    - typer >=0.15.1
+
+tests:
+  - python:
+      imports:
+        - znh5md
+      pip_check: true
+      python_version: ${{ python_min }}
+  - requirements:
+      run:
+        - pip
+        - python ${{ python_min }}.*
+    script:
+      - znh5md --help
+
+about:
+  summary: ASE Interface for the H5MD format.
+  license: Apache-2.0
+  license_file: LICENSE
+  homepage: https://github.com/zincware/ZnH5MD
+
+extra:
+  recipe-maintainers:
+    - jan-janssen
